@@ -1,15 +1,14 @@
-//FUNCTION THAT COMPARE TWO ARREY AND GIVE BACK A SCORE (in this case)
+//FUNCTION THAT COMPARE TWO ARREY AND GIVE BACK AN ARREY COMPOSED BY THE EQUAL NUMBERS OF THE COMPARED INPUT (in this case)
 function comparisonByArrey(arrey1,arrey2){
-    let points = 0;
-    let arrey3 = []
+    let arrey = [] ;
     for(let i=0; i<arrey2.length; i++){
         console.log(parseInt(arrey2[i]));
         if(arrey1.includes(parseInt(arrey2[i]))){
-            points++
+            arrey.push(parseInt(arrey2[i]))
         }
         
     }
-    return points
+    return arrey
 }
 //CREATE FUNCTION THAT GENERATE AN ARREY COMPOSED BY FIVE UNIQUE RANDOM NUMBERS
 function generateRandomNumber(){
@@ -39,6 +38,7 @@ function insertPlayerNumber(){
 }
 let arrey_player = []    
 let arrey_pc = generateRandomNumber()
+let compared_arrey = [];
 let points;
 document.getElementById('numbers').innerText += arrey_pc
 
@@ -51,7 +51,7 @@ setTimeout(function(){
     arrey_player = insertPlayerNumber()
     document.getElementById('numbers_player').innerText = arrey_player
     document.getElementById('numbers').innerText += arrey_pc
-    points = comparisonByArrey(arrey_player,arrey_pc)
-    console.log(points)
-    document.getElementById('score').innerText +=`hai indovinato ${points} numeri su 5` 
+    compared_arrey = comparisonByArrey(arrey_player,arrey_pc)
+    points = compared_arrey.length
+    document.getElementById('score').innerText +=`hai indovinato ${points} numeri su 5 e indovinato questi numeri ${compared_arrey}` 
 },5000)
